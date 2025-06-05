@@ -1,0 +1,221 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Maximize build space
+        run: |
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo docker image prune --all --force
+          sudo rm -Rf ${JAVA_HOME_8_X64}
+          sudo rm -Rf ${JAVA_HOME_11_X64}
+          sudo rm -Rf ${JAVA_HOME_17_X64}
+          sudo rm -Rf ${RUBY_PATH}
+      - uses: actions/checkout@v4
+      - name: Run 1
+        run: |
+          git clone https://github.com/trustification/trustify.git
+          cd trustify
+          cargo build --bin trustd --features pm
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 2
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 3
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 4
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 5
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 6
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 7
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 8
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 9
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 10
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 11
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 12
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 13
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 14
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 15
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 16
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 17
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 18
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 19
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
+      - name: Stop
+        run: killall trustd
+      - name: Run 20
+        run: |
+          cd trustify
+          AUTH_DISABLED=true cargo run --bin trustd &
+          until curl --output /dev/null --silent --head --fail http://localhost:8080; do
+            echo "Waiting for trustify..."
+            sleep 5
+          done
